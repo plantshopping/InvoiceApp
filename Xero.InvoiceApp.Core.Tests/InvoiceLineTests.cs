@@ -15,7 +15,7 @@ namespace Xero.InvoiceApp.Core.Tests
         {
             invoiceLine = new InvoiceLine()
             {
-                InvoiceLineId = invoiceLineId,
+                Id = invoiceLineId,
                 Cost = invoiceLineCost,
                 Description = invoiceLinedescription
             };

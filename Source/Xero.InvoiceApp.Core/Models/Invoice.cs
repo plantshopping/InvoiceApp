@@ -14,7 +14,7 @@ namespace InvoiceProject
 
         public void AddInvoiceLine(InvoiceLine invoiceLine) => LineItems.Add(invoiceLine);
 
-        public void RemoveInvoiceLine(int id) => LineItems.RemoveAll(l => l.InvoiceLineId == id);
+        public void RemoveInvoiceLine(int id) => LineItems.RemoveAll(l => l.Id == id);
         
         /// <summary>
         /// AppendInvoice appends the items from the sourceInvoice to the current invoice

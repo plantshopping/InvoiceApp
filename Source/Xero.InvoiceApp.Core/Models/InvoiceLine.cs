@@ -2,7 +2,7 @@
 {
     public class InvoiceLine
     {
-        public int InvoiceLineId { get; set; }
+        public int Id { get; set; }
         public string Description { get; set; }
         public int Quantity { get; set; }
         public decimal Cost { get; set; }

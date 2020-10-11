@@ -46,7 +46,7 @@ namespace InvoiceProject
 
             invoice.AddInvoiceLine(new InvoiceLine()
             {
-                InvoiceLineId = 1,
+                Id = 1,
                 Cost = 6.99m,
                 Quantity = 1,
                 Description = "Apple"
@@ -61,7 +61,7 @@ namespace InvoiceProject
 
             invoice.AddInvoiceLine(new InvoiceLine()
             {
-                InvoiceLineId = 1,
+                Id = 1,
                 Cost = 10.21m,
                 Quantity = 4,
                 Description = "Banana"
@@ -69,7 +69,7 @@ namespace InvoiceProject
 
             invoice.AddInvoiceLine(new InvoiceLine()
             {
-                InvoiceLineId = 2,
+                Id = 2,
                 Cost = 5.21m,
                 Quantity = 1,
                 Description = "Orange"
@@ -77,7 +77,7 @@ namespace InvoiceProject
 
             invoice.AddInvoiceLine(new InvoiceLine()
             {
-                InvoiceLineId = 3,
+                Id = 3,
                 Cost = 5.21m,
                 Quantity = 5,
                 Description = "Pineapple"
@@ -92,7 +92,7 @@ namespace InvoiceProject
 
             invoice.AddInvoiceLine(new InvoiceLine()
             {
-                InvoiceLineId = 1,
+                Id = 1,
                 Cost = 5.21m,
                 Quantity = 1,
                 Description = "Orange"
@@ -100,7 +100,7 @@ namespace InvoiceProject
 
             invoice.AddInvoiceLine(new InvoiceLine()
             {
-                InvoiceLineId = 2,
+                Id = 2,
                 Cost = 10.99m,
                 Quantity = 4,
                 Description = "Banana"
@@ -116,7 +116,7 @@ namespace InvoiceProject
 
             invoice1.AddInvoiceLine(new InvoiceLine()
             {
-                InvoiceLineId = 1,
+                Id = 1,
                 Cost = 10.33m,
                 Quantity = 4,
                 Description = "Banana"
@@ -126,7 +126,7 @@ namespace InvoiceProject
 
             invoice2.AddInvoiceLine(new InvoiceLine()
             {
-                InvoiceLineId = 2,
+                Id = 2,
                 Cost = 5.22m,
                 Quantity = 1,
                 Description = "Orange"
@@ -134,7 +134,7 @@ namespace InvoiceProject
 
             invoice2.AddInvoiceLine(new InvoiceLine()
             {
-                InvoiceLineId = 3,
+                Id = 3,
                 Cost = 6.27m,
                 Quantity = 3,
                 Description = "Blueberries"
@@ -150,7 +150,7 @@ namespace InvoiceProject
 
             invoice.AddInvoiceLine(new InvoiceLine()
             {
-                InvoiceLineId = 1,
+                Id = 1,
                 Cost = 6.99m,
                 Quantity = 1,
                 Description = "Apple"
@@ -158,7 +158,7 @@ namespace InvoiceProject
 
             invoice.AddInvoiceLine(new InvoiceLine()
             {
-                InvoiceLineId = 2,
+                Id = 2,
                 Cost = 6.27m,
                 Quantity = 3,
                 Description = "Blueberries"
@@ -178,7 +178,7 @@ namespace InvoiceProject
                 {
                     new InvoiceLine()
                     {
-                        InvoiceLineId = 1,
+                        Id = 1,
                         Cost = 6.99m,
                         Quantity = 1,
                         Description = "Apple"
