@@ -9,6 +9,22 @@ namespace Xero.InvoiceApp.Core.Tests
     public class InvoiceTests
     {
         [Fact]
+        public void GivenInvoice_WhenAddingSingleInvoiceLine_ShouldReturnCorrectTotal()
+        {
+            var invoice = new Invoice();
+
+            invoice.AddInvoiceLine(new InvoiceLine()
+            {
+                Id = 1,
+                Cost = 10.21m,
+                Quantity = 4,
+                Description = "Banana"
+            });
+
+            Assert.Equal(40.84m, invoice.Total);
+        }
+
+        [Fact]
         public void GivenInvoice_WhenAddingMultipleInvoiceLines_ShouldReturnCorrectTotal()
         {
             var invoice = new Invoice();
