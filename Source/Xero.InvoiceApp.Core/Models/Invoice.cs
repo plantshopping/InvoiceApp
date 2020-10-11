@@ -17,10 +17,10 @@ namespace InvoiceProject
         public void RemoveInvoiceLine(int id) => LineItems.RemoveAll(l => l.InvoiceLineId == id);
         
         /// <summary>
-        /// MergeInvoices appends the items from the sourceInvoice to the current invoice
+        /// AppendInvoice appends the items from the sourceInvoice to the current invoice
         /// </summary>
         /// <param name="sourceInvoice">Invoice to merge from</param>
-        public void MergeInvoices(Invoice sourceInvoice) => LineItems.AddRange(sourceInvoice.LineItems);
+        public void AppendInvoice(Invoice sourceInvoice) => LineItems.AddRange(sourceInvoice.LineItems);
         
         /// <summary>
         /// Creates a deep clone of the current invoice (all fields and properties)
@@ -32,6 +32,5 @@ namespace InvoiceProject
         /// Invoice Number: [InvoiceNumber], InvoiceDate: [dd/MM/yyyy], LineItemCount: [Number of items in LineItems]
         /// </summary>
         public override string ToString() => string.Format(Strings.InvoiceTemplate, InvoiceNumber.ToString(), InvoiceDate.ToString("dd/MM/yyyy"), LineItems.Count);
-        
     }
 }
