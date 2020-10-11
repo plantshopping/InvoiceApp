@@ -52,7 +52,7 @@ namespace InvoiceProject
                 Description = "Apple"
             });
 
-            Console.WriteLine(invoice.GetTotal());
+            Console.WriteLine(invoice.Total);
         }
 
         private static void CreateInvoiceWithMultipleItemsAndQuantities()
@@ -83,7 +83,7 @@ namespace InvoiceProject
                 Description = "Pineapple"
             });
 
-            Console.WriteLine(invoice.GetTotal());
+            Console.WriteLine(invoice.Total);
         }
 
         private static void RemoveItem()
@@ -107,7 +107,7 @@ namespace InvoiceProject
             });
 
             invoice.RemoveInvoiceLine(1);
-            Console.WriteLine(invoice.GetTotal());
+            Console.WriteLine(invoice.Total);
         }
 
         private static void MergeInvoices()
@@ -141,7 +141,7 @@ namespace InvoiceProject
             });
 
             invoice1.MergeInvoices(invoice2);
-            Console.WriteLine(invoice1.GetTotal());
+            Console.WriteLine(invoice1.Total);
         }
 
         private static void CloneInvoice()
@@ -165,7 +165,7 @@ namespace InvoiceProject
             });
 
             var clonedInvoice = invoice.Clone();
-            Console.WriteLine(clonedInvoice.GetTotal());
+            Console.WriteLine(clonedInvoice.Total);
         }
 
         private static void InvoiceToString()

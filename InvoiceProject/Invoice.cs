@@ -1,6 +1,7 @@
 ﻿using Force.DeepCloner;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace InvoiceProject
 {
@@ -9,6 +10,7 @@ namespace InvoiceProject
         public int InvoiceNumber { get; set; }
         public DateTime InvoiceDate { get; set; }
         public List<InvoiceLine> LineItems { get; set; } = new List<InvoiceLine>();
+        public decimal Total => LineItems.Sum(l => l.TotalCost);
 
         public void AddInvoiceLine(InvoiceLine invoiceLine)
         {
@@ -18,22 +20,6 @@ namespace InvoiceProject
         public void RemoveInvoiceLine(int id)
         {
             LineItems.RemoveAll(l => l.InvoiceLineId == id);
-        }
-
-        /// <summary>
-        /// GetTotal should return the sum of (Cost * Quantity) for each line item
-        /// </summary>
-        public decimal GetTotal()
-        {
-            decimal total = 0m;
-
-            // TODO Can we use linq?
-            foreach (var lineItem in LineItems)
-            {
-                total += lineItem.Cost * lineItem.Quantity;
-            }
-
-            return total;
         }
 
         /// <summary>
