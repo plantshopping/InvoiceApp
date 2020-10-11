@@ -5,7 +5,7 @@ namespace Xero.InvoiceApp.Core.Tests
 {
     public class InvoiceLineTests
     {
-        private InvoiceLine invoiceLine;
+        private readonly InvoiceLine invoiceLine;
 
         private readonly int invoiceLineId = 1;
         private readonly decimal invoiceLineCost = 6.99m;
