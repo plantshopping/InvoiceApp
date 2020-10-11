@@ -13,13 +13,17 @@ namespace Xero.InvoiceApp.Core.Tests
         {
             var invoice = new Invoice();
 
-            invoice.AddInvoiceLine(new InvoiceLine()
+            var invoiceLines = new List<InvoiceLine>
             {
-                Id = 1,
-                Cost = 10.21m,
-                Quantity = 4,
-                Description = "Banana"
-            });
+                new InvoiceLine() {
+                    Id = 1,
+                    Cost = 10.21m,
+                    Quantity = 4,
+                    Description = "Banana"
+                }
+            };
+
+            invoice.AddInvoiceLines(invoiceLines);
 
             Assert.Equal(40.84m, invoice.Total);
         }
@@ -29,27 +33,31 @@ namespace Xero.InvoiceApp.Core.Tests
         {
             var invoice = new Invoice();
 
-            invoice.AddInvoiceLine(new InvoiceLine()
+            var invoiceLines = new List<InvoiceLine>
             {
-                Id = 1,
-                Cost = 10.21m,
-                Quantity = 4,
-                Description = "Banana"
-            });
-            invoice.AddInvoiceLine(new InvoiceLine()
+                new InvoiceLine() {
+                    Id = 1,
+                    Cost = 10.21m,
+                    Quantity = 4,
+                    Description = "Banana"
+                },
+                new InvoiceLine()
             {
                 Id = 2,
                 Cost = 5.21m,
                 Quantity = 1,
                 Description = "Orange"
-            });
-            invoice.AddInvoiceLine(new InvoiceLine()
+            },
+                new InvoiceLine()
             {
                 Id = 3,
                 Cost = 5.21m,
                 Quantity = 5,
                 Description = "Pineapple"
-            });
+            }
+            };
+
+            invoice.AddInvoiceLines(invoiceLines);
 
             Assert.Equal(72.1m, invoice.Total);
         }
@@ -59,22 +67,33 @@ namespace Xero.InvoiceApp.Core.Tests
         {
             var invoice = new Invoice();
 
-            invoice.AddInvoiceLine(new InvoiceLine()
+            var invoiceLines = new List<InvoiceLine>
             {
-                Id = 1,
+                new InvoiceLine() {
+                    Id = 1,
+                    Cost = 10.21m,
+                    Quantity = 4,
+                    Description = "Banana"
+                },
+                new InvoiceLine()
+            {
+                Id = 2,
                 Cost = 5.21m,
                 Quantity = 1,
                 Description = "Orange"
-            });
-            invoice.AddInvoiceLine(new InvoiceLine()
+            },
+                new InvoiceLine()
             {
-                Id = 2,
-                Cost = 10.99m,
-                Quantity = 4,
-                Description = "Banana"
-            });
+                Id = 3,
+                Cost = 5.21m,
+                Quantity = 5,
+                Description = "Pineapple"
+            }
+            };
 
-            invoice.RemoveInvoiceLine(1);
+            invoice.LineItems = invoiceLines;
+
+            invoice.RemoveInvoiceLines(new List<int> { 1 });
 
             Assert.Equal(43.96m, invoice.Total);
         }
@@ -84,30 +103,40 @@ namespace Xero.InvoiceApp.Core.Tests
         {
             var invoice1 = new Invoice();
 
-            invoice1.AddInvoiceLine(new InvoiceLine()
+            var invoice1Lines = new List<InvoiceLine>
+            {
+new InvoiceLine()
             {
                 Id = 1,
                 Cost = 10.33m,
                 Quantity = 4,
                 Description = "Banana"
-            });
+            }
+            };
+
+            invoice1.LineItems = invoice1Lines;
 
             var invoice2 = new Invoice();
 
-            invoice2.AddInvoiceLine(new InvoiceLine()
+            var invoice2Lines = new List<InvoiceLine>
+            {
+new InvoiceLine()
             {
                 Id = 2,
                 Cost = 5.22m,
                 Quantity = 1,
                 Description = "Orange"
-            });
-            invoice2.AddInvoiceLine(new InvoiceLine()
+            },
+new InvoiceLine()
             {
                 Id = 3,
                 Cost = 6.27m,
                 Quantity = 3,
                 Description = "Blueberries"
-            });
+            }
+            };
+
+            invoice2.LineItems = invoice2Lines;
 
             invoice1.AppendInvoices(new List<Invoice> { invoice2 });
 
@@ -122,13 +151,18 @@ namespace Xero.InvoiceApp.Core.Tests
                 Number = 1,
                 Date = DateTime.Now
             };
-            invoice1.AddInvoiceLine(new InvoiceLine()
+
+            var invoiceLines = new List<InvoiceLine>
             {
+                new InvoiceLine() {
                 Id = 1,
                 Cost = 10.33m,
                 Quantity = 4,
                 Description = "Banana"
-            });
+                }
+            };
+
+            invoice1.LineItems = invoiceLines;
 
             var invoiceClone = invoice1.DeepClone();
 
@@ -156,13 +190,20 @@ namespace Xero.InvoiceApp.Core.Tests
                 Number = 1,
                 Date = dateNow
             };
-            invoice1.AddInvoiceLine(new InvoiceLine()
-            {
+
+            var invoice1Lines = new List<InvoiceLine>
+                {
+                new InvoiceLine(){
                 Id = 1,
                 Cost = 10.33m,
                 Quantity = 4,
                 Description = "Banana"
-            });
+
+                }
+
+            };
+
+            invoice1.LineItems = invoice1Lines;
 
             var invoiceClone = invoice1.DeepClone();
             invoiceClone.Number = 2;
