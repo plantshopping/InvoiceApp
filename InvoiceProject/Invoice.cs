@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Force.DeepCloner;
+using System;
 using System.Collections.Generic;
 
 namespace InvoiceProject
@@ -49,7 +50,7 @@ namespace InvoiceProject
         /// </summary>
         public Invoice Clone()
         {
-            throw new NotImplementedException();
+            return this.DeepClone();
         }
 
         /// <summary>
