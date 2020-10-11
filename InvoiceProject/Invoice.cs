@@ -24,7 +24,15 @@ namespace InvoiceProject
         /// </summary>
         public decimal GetTotal()
         {
-            throw new NotImplementedException();
+            decimal total = 0m;
+
+            // TODO Can we use linq?
+            foreach(var lineItem in LineItems)
+            {
+                total += lineItem.Cost * lineItem.Quantity;
+            }
+
+            return total;
         }
 
         /// <summary>
