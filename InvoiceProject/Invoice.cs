@@ -27,7 +27,7 @@ namespace InvoiceProject
             decimal total = 0m;
 
             // TODO Can we use linq?
-            foreach(var lineItem in LineItems)
+            foreach (var lineItem in LineItems)
             {
                 total += lineItem.Cost * lineItem.Quantity;
             }
