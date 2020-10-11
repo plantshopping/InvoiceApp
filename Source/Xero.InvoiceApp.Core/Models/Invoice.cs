@@ -17,10 +17,10 @@ namespace InvoiceProject
         public void RemoveInvoiceLine(int id) => LineItems.RemoveAll(l => l.Id == id);
         
         /// <summary>
-        /// AppendInvoice appends the items from the sourceInvoice to the current invoice
+        /// AppendInvoices appends the items from the sourceInvoice to the current invoice
         /// </summary>
         /// <param name="sourceInvoice">Invoice to merge from</param>
-        public void AppendInvoices(List<Invoice> sourceInvoice) => LineItems.AddRange(sourceInvoice.SelectMany(i => i.LineItems));
+        public void AppendInvoices(List<Invoice> sourceInvoices) => LineItems.AddRange(sourceInvoices.SelectMany(i => i.LineItems));
         
         /// <summary>
         /// Creates a deep clone of the current invoice (all fields and properties)
