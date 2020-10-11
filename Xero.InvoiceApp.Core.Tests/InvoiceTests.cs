@@ -115,7 +115,7 @@ namespace Xero.InvoiceApp.Core.Tests
         }
 
         [Fact]
-        public void GivenInvoice_WhenDeepClone_ShouldHaveTheSameProperties()
+        public void GivenInvoice_WhenDeepCloning_ShouldHaveTheSameProperties()
         {
             var invoice1 = new Invoice
             {
@@ -144,6 +144,45 @@ namespace Xero.InvoiceApp.Core.Tests
             Assert.Equal(invoiceFirstLineItem.Cost, invoiceCloneFirstLineItem.Cost);
             Assert.Equal(invoiceFirstLineItem.Quantity, invoiceCloneFirstLineItem.Quantity);
             Assert.Equal(invoiceFirstLineItem.Description, invoiceCloneFirstLineItem.Description);
+        }
+
+        [Fact]
+        public void GivenInvoice_WhenDeepCloningAndClonedPropertiesAreChanged_ShouldNotChangeOriginalProperties()
+        {
+            var dateNow = DateTime.Now;
+
+            var invoice1 = new Invoice
+            {
+                Number = 1,
+                Date = dateNow
+            };
+            invoice1.AddInvoiceLine(new InvoiceLine()
+            {
+                Id = 1,
+                Cost = 10.33m,
+                Quantity = 4,
+                Description = "Banana"
+            });
+
+            var invoiceClone = invoice1.DeepClone();
+            invoiceClone.Number = 2;
+            invoiceClone.Date = new DateTime(2020, 01, 01);
+            invoiceClone.LineItems = new List<InvoiceLine>();
+
+            Assert.Equal(2, invoiceClone.Number);
+            Assert.Equal(new DateTime(2020, 01, 01), invoiceClone.Date);
+            Assert.Equal(0, invoiceClone.Total);
+            Assert.Empty(invoiceClone.LineItems);
+
+            var invoiceFirstLineItem = invoice1.LineItems.First();
+
+            Assert.Equal(1, invoice1.Number);
+            Assert.Equal(dateNow, invoice1.Date);
+            Assert.Single(invoice1.LineItems);
+            Assert.Equal(1, invoiceFirstLineItem.Id);
+            Assert.Equal(10.33m, invoiceFirstLineItem.Cost);
+            Assert.Equal(4, invoiceFirstLineItem.Quantity);
+            Assert.Equal("Banana", invoiceFirstLineItem.Description);
         }
 
         [Fact]
