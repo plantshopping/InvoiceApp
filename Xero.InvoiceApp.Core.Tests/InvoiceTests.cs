@@ -1,5 +1,6 @@
 ﻿using InvoiceProject;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using Xunit;
 
@@ -127,6 +128,32 @@ namespace Xero.InvoiceApp.Core.Tests
             Assert.Equal(invoiceFirstLineItem.Cost, invoiceCloneFirstLineItem.Cost);
             Assert.Equal(invoiceFirstLineItem.Quantity, invoiceCloneFirstLineItem.Quantity);
             Assert.Equal(invoiceFirstLineItem.Description, invoiceCloneFirstLineItem.Description);
+        }
+
+        [Fact]
+        public void GivenInvoice_WhenFormattingToString_ShouldReturnCorrectString()
+        {
+            var date = new DateTime(2020, 12, 10);
+
+            var invoice = new Invoice()
+            {
+                Date = date,
+                Number = 1000,
+                LineItems = new List<InvoiceLine>()
+                {
+                    new InvoiceLine()
+                    {
+                        Id = 1,
+                        Cost = 6.99m,
+                        Quantity = 1,
+                        Description = "Apple"
+                    }
+                }
+            };
+
+            var invoiceString = invoice.ToString();
+
+            Assert.Equal($"Invoice Number: {invoice.Number}, InvoiceDate: 10/12/2020, LineItemCount: {invoice.LineItems.Count}", invoiceString);
         }
     }
 }
