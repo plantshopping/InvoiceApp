@@ -130,7 +130,7 @@ namespace Xero.InvoiceApp.Core.Tests
                 Description = "Banana"
             });
 
-            var invoiceClone = invoice1.Clone();
+            var invoiceClone = invoice1.DeepClone();
 
             Assert.Equal(invoiceClone.Number, invoice1.Number);
             Assert.Equal(invoiceClone.Date, invoice1.Date);

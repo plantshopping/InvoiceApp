@@ -164,7 +164,7 @@ namespace InvoiceProject
                 Description = "Blueberries"
             });
 
-            var clonedInvoice = invoice.Clone();
+            var clonedInvoice = invoice.DeepClone();
             Console.WriteLine(clonedInvoice.Total);
         }
 

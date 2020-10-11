@@ -25,7 +25,7 @@ namespace InvoiceProject
         /// <summary>
         /// Creates a deep clone of the current invoice (all fields and properties)
         /// </summary>
-        public Invoice Clone() => this.DeepClone();
+        public Invoice DeepClone() => DeepClonerExtensions.DeepClone(this);
 
         /// <summary>
         /// Outputs string containing the following (replace [] with actual values):
