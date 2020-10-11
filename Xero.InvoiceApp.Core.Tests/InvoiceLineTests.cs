@@ -9,7 +9,7 @@ namespace Xero.InvoiceApp.Core.Tests
 
         private readonly int invoiceLineId = 1;
         private readonly decimal invoiceLineCost = 6.99m;
-        private readonly string invoiceLinedescription = "Apple";
+        private readonly string invoiceLineDescription = "Apple";
 
         public InvoiceLineTests()
         {
@@ -17,24 +17,32 @@ namespace Xero.InvoiceApp.Core.Tests
             {
                 Id = invoiceLineId,
                 Cost = invoiceLineCost,
-                Description = invoiceLinedescription
+                Description = invoiceLineDescription
             };
         }
 
         [Fact]
-        public void GivenInvoiceLine_WithSingleQuantity_ShouldReturnCorrectTotal()
+        public void InvoiceLine_SingleQuantity_ShouldReturnCorrectTotal()
         {
             invoiceLine.Quantity = 1;
 
-            Assert.Equal(6.99m, invoiceLine.TotalCost);
+            AssertInvoiceLine(invoiceLine, 6.99m);
         }
 
         [Fact]
-        public void GivenInvoiceLine_WithMultipleQuantity_ShouldReturnCorrectTotal()
+        public void InvoiceLine_MultipleQuantity_ShouldReturnCorrectTotal()
         {
             invoiceLine.Quantity = 3;
 
-            Assert.Equal(20.97m, invoiceLine.TotalCost);
+            AssertInvoiceLine(invoiceLine, 20.97m);
+        }
+
+        void AssertInvoiceLine(InvoiceLine invoiceLine, decimal expectedInvoiceLineTotalCost)
+        {
+            Assert.Equal(invoiceLineId, invoiceLine.Id);
+            Assert.Equal(invoiceLineCost, invoiceLine.Cost);
+            Assert.Equal(invoiceLineDescription, invoiceLine.Description);
+            Assert.Equal(expectedInvoiceLineTotalCost, invoiceLine.TotalCost);
         }
     }
 }

@@ -9,7 +9,7 @@ namespace Xero.InvoiceApp.Core.Tests
     public class InvoiceTests
     {
         [Fact]
-        public void GivenInvoice_WhenAddingSingleInvoiceLine_ShouldReturnCorrectTotal()
+        public void Add_SingleInvoiceLine_ShouldReturnCorrectTotal()
         {
             var invoice = new Invoice();
 
@@ -25,7 +25,7 @@ namespace Xero.InvoiceApp.Core.Tests
         }
 
         [Fact]
-        public void GivenInvoice_WhenAddingMultipleInvoiceLines_ShouldReturnCorrectTotal()
+        public void Add_MultipleInvoiceLines_ShouldReturnCorrectTotal()
         {
             var invoice = new Invoice();
 
@@ -55,7 +55,7 @@ namespace Xero.InvoiceApp.Core.Tests
         }
 
         [Fact]
-        public void GivenInvoice_WhenRemovingInvoiceLines_ShouldReturnCorrectTotal()
+        public void Remov_InvoiceLines_ShouldReturnCorrectTotal()
         {
             var invoice = new Invoice();
 
@@ -80,7 +80,7 @@ namespace Xero.InvoiceApp.Core.Tests
         }
 
         [Fact]
-        public void GivenInvoice_WhenAppendingInvoice_ShouldReturnCorrectTotal()
+        public void Append_InvoiceWithMultipleInvoiceLines_ShouldReturnCorrectTotal()
         {
             var invoice1 = new Invoice();
 
@@ -115,7 +115,7 @@ namespace Xero.InvoiceApp.Core.Tests
         }
 
         [Fact]
-        public void GivenInvoice_WhenDeepCloning_ShouldHaveTheSameProperties()
+        public void DeepClone_Invoice_ShouldHaveTheSameProperties()
         {
             var invoice1 = new Invoice
             {
@@ -147,7 +147,7 @@ namespace Xero.InvoiceApp.Core.Tests
         }
 
         [Fact]
-        public void GivenInvoice_WhenDeepCloningAndClonedPropertiesAreChanged_ShouldNotChangeOriginalProperties()
+        public void DeepClone_InvoiceWithChangeInProperties_ShouldNotChangeOriginalProperties()
         {
             var dateNow = DateTime.Now;
 
@@ -186,7 +186,7 @@ namespace Xero.InvoiceApp.Core.Tests
         }
 
         [Fact]
-        public void GivenInvoice_WhenFormattingToString_ShouldReturnCorrectString()
+        public void ToString_Invoice_ShouldReturnCorrectString()
         {
             var date = new DateTime(2020, 12, 10);
 
