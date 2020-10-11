@@ -32,7 +32,7 @@ namespace InvoiceProject
         {
             Console.WriteLine("Welcome to Xero Tech Test!");
 
-            CreateInvoiceWithOneIte();
+            CreateInvoiceWithOneItem();
             CreateInvoiceWithMultipleItemsAndQuantities();
             RemoveItem();
             MergeInvoices();
