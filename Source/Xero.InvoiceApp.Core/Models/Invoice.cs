@@ -12,16 +12,17 @@ namespace InvoiceProject
         public List<InvoiceLine> LineItems { get; set; } = new List<InvoiceLine>();
         public decimal Total => LineItems.Sum(l => l.TotalCost);
 
-        public void AddInvoiceLines(List<InvoiceLine> invoiceLines) => LineItems.AddRange(invoiceLines);
+        public void AddInvoiceLines(IEnumerable<InvoiceLine> invoiceLines) => LineItems.AddRange(invoiceLines);
 
-        public void RemoveInvoiceLines(List<int> id) => LineItems.RemoveAll(l => id.Contains(l.Id));
-        
+        public void RemoveInvoiceLines(IEnumerable<int> ids) => LineItems.RemoveAll(l => ids.Contains(l.Id));
+
         /// <summary>
         /// AppendInvoices appends the items from the sourceInvoice to the current invoice
         /// </summary>
-        /// <param name="sourceInvoice">Invoice to merge from</param>
-        public void AppendInvoices(List<Invoice> sourceInvoices) => LineItems.AddRange(sourceInvoices.SelectMany(i => i.LineItems));
-        
+        /// <param name="sourceInvoices">Invoice to merge from</param>
+        public void AppendInvoices(IEnumerable<Invoice> sourceInvoices) =>
+            LineItems.AddRange(sourceInvoices.SelectMany(i => i.LineItems));
+
         /// <summary>
         /// Creates a deep clone of the current invoice (all fields and properties)
         /// </summary>
@@ -31,6 +32,7 @@ namespace InvoiceProject
         /// Outputs string containing the following (replace [] with actual values):
         /// Invoice Number: [InvoiceNumber], InvoiceDate: [dd/MM/yyyy], LineItemCount: [Number of items in LineItems]
         /// </summary>
-        public override string ToString() => string.Format(Strings.InvoiceTemplate, Number.ToString(), Date.ToString("dd/MM/yyyy"), LineItems.Count);
+        public override string ToString() => string.Format(Strings.InvoiceTemplate, Number.ToString(),
+            Date.ToString("dd/MM/yyyy"), LineItems.Count);
     }
 }

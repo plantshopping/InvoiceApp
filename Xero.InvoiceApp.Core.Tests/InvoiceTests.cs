@@ -11,11 +11,11 @@ namespace Xero.InvoiceApp.Core.Tests
         [Fact]
         public void Add_SingleInvoiceLine_ShouldReturnCorrectTotal()
         {
-            var invoice = new Invoice();
-
+            // Given
             var invoiceLines = new List<InvoiceLine>
             {
-                new InvoiceLine() {
+                new InvoiceLine
+                {
                     Id = 1,
                     Cost = 10.21m,
                     Quantity = 4,
@@ -23,149 +23,173 @@ namespace Xero.InvoiceApp.Core.Tests
                 }
             };
 
+            var invoice = new Invoice();
+
+            // When
             invoice.AddInvoiceLines(invoiceLines);
 
+            // Then
             Assert.Equal(40.84m, invoice.Total);
         }
 
         [Fact]
         public void Add_MultipleInvoiceLines_ShouldReturnCorrectTotal()
         {
-            var invoice = new Invoice();
-
+            // Given
             var invoiceLines = new List<InvoiceLine>
             {
-                new InvoiceLine() {
+                new InvoiceLine
+                {
                     Id = 1,
                     Cost = 10.21m,
                     Quantity = 4,
                     Description = "Banana"
                 },
-                new InvoiceLine()
-            {
-                Id = 2,
-                Cost = 5.21m,
-                Quantity = 1,
-                Description = "Orange"
-            },
-                new InvoiceLine()
-            {
-                Id = 3,
-                Cost = 5.21m,
-                Quantity = 5,
-                Description = "Pineapple"
-            }
+                new InvoiceLine
+                {
+                    Id = 2,
+                    Cost = 5.21m,
+                    Quantity = 1,
+                    Description = "Orange"
+                },
+                new InvoiceLine
+                {
+                    Id = 3,
+                    Cost = 5.21m,
+                    Quantity = 5,
+                    Description = "Pineapple"
+                }
             };
 
+            var invoice = new Invoice
+            {
+                LineItems = invoiceLines
+            };
+
+            // When
             invoice.AddInvoiceLines(invoiceLines);
 
+            // Then
             Assert.Equal(72.1m, invoice.Total);
         }
 
         [Fact]
-        public void Remov_InvoiceLines_ShouldReturnCorrectTotal()
+        public void Remove_InvoiceLines_ShouldReturnCorrectTotal()
         {
-            var invoice = new Invoice();
-
+            // Given
             var invoiceLines = new List<InvoiceLine>
             {
-                new InvoiceLine() {
+                new InvoiceLine
+                {
                     Id = 1,
                     Cost = 10.21m,
                     Quantity = 4,
                     Description = "Banana"
                 },
-                new InvoiceLine()
-            {
-                Id = 2,
-                Cost = 5.21m,
-                Quantity = 1,
-                Description = "Orange"
-            },
-                new InvoiceLine()
-            {
-                Id = 3,
-                Cost = 5.21m,
-                Quantity = 5,
-                Description = "Pineapple"
-            }
+                new InvoiceLine
+                {
+                    Id = 2,
+                    Cost = 5.21m,
+                    Quantity = 1,
+                    Description = "Orange"
+                },
+                new InvoiceLine
+                {
+                    Id = 3,
+                    Cost = 5.21m,
+                    Quantity = 5,
+                    Description = "Pineapple"
+                }
             };
 
-            invoice.LineItems = invoiceLines;
+            var invoice = new Invoice
+            {
+                LineItems = invoiceLines
+            };
 
-            invoice.RemoveInvoiceLines(new List<int> { 1 });
+            // When
+            invoice.RemoveInvoiceLines(new List<int> {1});
 
+            // Then
             Assert.Equal(43.96m, invoice.Total);
         }
 
         [Fact]
         public void Append_InvoiceWithMultipleInvoiceLines_ShouldReturnCorrectTotal()
         {
-            var invoice1 = new Invoice();
-
+            // Given
             var invoice1Lines = new List<InvoiceLine>
             {
-new InvoiceLine()
-            {
-                Id = 1,
-                Cost = 10.33m,
-                Quantity = 4,
-                Description = "Banana"
-            }
+                new InvoiceLine
+                {
+                    Id = 1,
+                    Cost = 10.33m,
+                    Quantity = 4,
+                    Description = "Banana"
+                }
             };
 
-            invoice1.LineItems = invoice1Lines;
-
-            var invoice2 = new Invoice();
+            var invoice1 = new Invoice
+            {
+                LineItems = invoice1Lines
+            };
 
             var invoice2Lines = new List<InvoiceLine>
             {
-new InvoiceLine()
-            {
-                Id = 2,
-                Cost = 5.22m,
-                Quantity = 1,
-                Description = "Orange"
-            },
-new InvoiceLine()
-            {
-                Id = 3,
-                Cost = 6.27m,
-                Quantity = 3,
-                Description = "Blueberries"
-            }
+                new InvoiceLine
+                {
+                    Id = 2,
+                    Cost = 5.22m,
+                    Quantity = 1,
+                    Description = "Orange"
+                },
+                new InvoiceLine
+                {
+                    Id = 3,
+                    Cost = 6.27m,
+                    Quantity = 3,
+                    Description = "Blueberries"
+                }
             };
 
-            invoice2.LineItems = invoice2Lines;
+            var invoice2 = new Invoice
+            {
+                LineItems = invoice2Lines
+            };
 
-            invoice1.AppendInvoices(new List<Invoice> { invoice2 });
+            // When
+            invoice1.AppendInvoices(new List<Invoice> {invoice2});
 
+            // Then
             Assert.Equal(65.35m, invoice1.Total);
         }
 
         [Fact]
         public void DeepClone_Invoice_ShouldHaveTheSameProperties()
         {
-            var invoice1 = new Invoice
-            {
-                Number = 1,
-                Date = DateTime.Now
-            };
-
+            // Given
             var invoiceLines = new List<InvoiceLine>
             {
-                new InvoiceLine() {
-                Id = 1,
-                Cost = 10.33m,
-                Quantity = 4,
-                Description = "Banana"
+                new InvoiceLine
+                {
+                    Id = 1,
+                    Cost = 10.33m,
+                    Quantity = 4,
+                    Description = "Banana"
                 }
             };
 
-            invoice1.LineItems = invoiceLines;
+            var invoice1 = new Invoice
+            {
+                Number = 1,
+                Date = DateTime.Now,
+                LineItems = invoiceLines
+            };
 
+            // When
             var invoiceClone = invoice1.DeepClone();
 
+            // Then
             Assert.Equal(invoiceClone.Number, invoice1.Number);
             Assert.Equal(invoiceClone.Date, invoice1.Date);
             Assert.Equal(invoiceClone.Total, invoice1.Total);
@@ -183,33 +207,34 @@ new InvoiceLine()
         [Fact]
         public void DeepClone_InvoiceWithChangeInProperties_ShouldNotChangeOriginalProperties()
         {
+            // Given
             var dateNow = DateTime.Now;
+
+            var invoice1Lines = new List<InvoiceLine>
+            {
+                new InvoiceLine
+                {
+                    Id = 1,
+                    Cost = 10.33m,
+                    Quantity = 4,
+                    Description = "Banana"
+                }
+            };
 
             var invoice1 = new Invoice
             {
                 Number = 1,
-                Date = dateNow
+                Date = dateNow,
+                LineItems = invoice1Lines
             };
 
-            var invoice1Lines = new List<InvoiceLine>
-                {
-                new InvoiceLine(){
-                Id = 1,
-                Cost = 10.33m,
-                Quantity = 4,
-                Description = "Banana"
-
-                }
-
-            };
-
-            invoice1.LineItems = invoice1Lines;
-
+            // When
             var invoiceClone = invoice1.DeepClone();
             invoiceClone.Number = 2;
             invoiceClone.Date = new DateTime(2020, 01, 01);
             invoiceClone.LineItems = new List<InvoiceLine>();
 
+            // Then
             Assert.Equal(2, invoiceClone.Number);
             Assert.Equal(new DateTime(2020, 01, 01), invoiceClone.Date);
             Assert.Equal(0, invoiceClone.Total);
@@ -229,15 +254,16 @@ new InvoiceLine()
         [Fact]
         public void ToString_Invoice_ShouldReturnCorrectString()
         {
+            // Given
             var date = new DateTime(2020, 12, 10);
 
-            var invoice = new Invoice()
+            var invoice = new Invoice
             {
                 Date = date,
                 Number = 1000,
-                LineItems = new List<InvoiceLine>()
+                LineItems = new List<InvoiceLine>
                 {
-                    new InvoiceLine()
+                    new InvoiceLine
                     {
                         Id = 1,
                         Cost = 6.99m,
@@ -247,9 +273,13 @@ new InvoiceLine()
                 }
             };
 
+            // When
             var invoiceString = invoice.ToString();
 
-            Assert.Equal($"Invoice Number: {invoice.Number}, InvoiceDate: 10/12/2020, LineItemCount: {invoice.LineItems.Count}", invoiceString);
+            // Then
+            Assert.Equal(
+                $"Invoice Number: {invoice.Number}, InvoiceDate: 10/12/2020, LineItemCount: {invoice.LineItems.Count}",
+                invoiceString);
         }
     }
 }

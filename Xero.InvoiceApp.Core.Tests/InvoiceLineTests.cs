@@ -5,43 +5,43 @@ namespace Xero.InvoiceApp.Core.Tests
 {
     public class InvoiceLineTests
     {
-        private readonly InvoiceLine invoiceLine;
+        private readonly InvoiceLine _invoiceLine;
 
-        private readonly int invoiceLineId = 1;
-        private readonly decimal invoiceLineCost = 6.99m;
-        private readonly string invoiceLineDescription = "Apple";
+        private const int InvoiceLineId = 1;
+        private const decimal InvoiceLineCost = 6.99m;
+        private const string InvoiceLineDescription = "Apple";
 
         public InvoiceLineTests()
         {
-            invoiceLine = new InvoiceLine()
+            _invoiceLine = new InvoiceLine
             {
-                Id = invoiceLineId,
-                Cost = invoiceLineCost,
-                Description = invoiceLineDescription
+                Id = InvoiceLineId,
+                Cost = InvoiceLineCost,
+                Description = InvoiceLineDescription
             };
         }
 
         [Fact]
         public void InvoiceLine_SingleQuantity_ShouldReturnCorrectTotal()
         {
-            invoiceLine.Quantity = 1;
+            _invoiceLine.Quantity = 1;
 
-            AssertInvoiceLine(invoiceLine, 6.99m);
+            AssertInvoiceLine(_invoiceLine, 6.99m);
         }
 
         [Fact]
         public void InvoiceLine_MultipleQuantity_ShouldReturnCorrectTotal()
         {
-            invoiceLine.Quantity = 3;
+            _invoiceLine.Quantity = 3;
 
-            AssertInvoiceLine(invoiceLine, 20.97m);
+            AssertInvoiceLine(_invoiceLine, 20.97m);
         }
-
+        
         void AssertInvoiceLine(InvoiceLine invoiceLine, decimal expectedInvoiceLineTotalCost)
         {
-            Assert.Equal(invoiceLineId, invoiceLine.Id);
-            Assert.Equal(invoiceLineCost, invoiceLine.Cost);
-            Assert.Equal(invoiceLineDescription, invoiceLine.Description);
+            Assert.Equal(InvoiceLineId, invoiceLine.Id);
+            Assert.Equal(InvoiceLineCost, invoiceLine.Cost);
+            Assert.Equal(InvoiceLineDescription, invoiceLine.Description);
             Assert.Equal(expectedInvoiceLineTotalCost, invoiceLine.TotalCost);
         }
     }
