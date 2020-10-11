@@ -7,7 +7,7 @@ namespace InvoiceProject
     {
         public int InvoiceNumber { get; set; }
         public DateTime InvoiceDate { get; set; }
-        public List<InvoiceLine> LineItems { get; set; }
+        public List<InvoiceLine> LineItems { get; set; } = new List<InvoiceLine>();
 
         public void AddInvoiceLine(InvoiceLine invoiceLine)
         {
