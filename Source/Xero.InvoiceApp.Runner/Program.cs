@@ -172,8 +172,8 @@ namespace InvoiceProject
         {
             var invoice = new Invoice()
             {
-                InvoiceDate = DateTime.Now,
-                InvoiceNumber = 1000,
+                Date = DateTime.Now,
+                Number = 1000,
                 LineItems = new List<InvoiceLine>()
                 {
                     new InvoiceLine()

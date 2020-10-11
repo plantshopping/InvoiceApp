@@ -102,8 +102,8 @@ namespace Xero.InvoiceApp.Core.Tests
         {
             var invoice1 = new Invoice
             {
-                InvoiceNumber = 1,
-                InvoiceDate = DateTime.Now
+                Number = 1,
+                Date = DateTime.Now
             };
             invoice1.AddInvoiceLine(new InvoiceLine()
             {
@@ -115,8 +115,8 @@ namespace Xero.InvoiceApp.Core.Tests
 
             var invoiceClone = invoice1.Clone();
 
-            Assert.Equal(invoiceClone.InvoiceNumber, invoice1.InvoiceNumber);
-            Assert.Equal(invoiceClone.InvoiceDate, invoice1.InvoiceDate);
+            Assert.Equal(invoiceClone.Number, invoice1.Number);
+            Assert.Equal(invoiceClone.Date, invoice1.Date);
             Assert.Equal(invoiceClone.Total, invoice1.Total);
             Assert.Equal(invoiceClone.LineItems.Count, invoice1.LineItems.Count);
 

@@ -7,8 +7,8 @@ namespace InvoiceProject
 {
     public class Invoice
     {
-        public int InvoiceNumber { get; set; }
-        public DateTime InvoiceDate { get; set; }
+        public int Number { get; set; }
+        public DateTime Date { get; set; }
         public List<InvoiceLine> LineItems { get; set; } = new List<InvoiceLine>();
         public decimal Total => LineItems.Sum(l => l.TotalCost);
 
@@ -31,6 +31,6 @@ namespace InvoiceProject
         /// Outputs string containing the following (replace [] with actual values):
         /// Invoice Number: [InvoiceNumber], InvoiceDate: [dd/MM/yyyy], LineItemCount: [Number of items in LineItems]
         /// </summary>
-        public override string ToString() => string.Format(Strings.InvoiceTemplate, InvoiceNumber.ToString(), InvoiceDate.ToString("dd/MM/yyyy"), LineItems.Count);
+        public override string ToString() => string.Format(Strings.InvoiceTemplate, Number.ToString(), Date.ToString("dd/MM/yyyy"), LineItems.Count);
     }
 }
