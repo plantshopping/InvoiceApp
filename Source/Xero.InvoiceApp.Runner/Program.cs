@@ -140,7 +140,7 @@ namespace InvoiceProject
                 Description = "Blueberries"
             });
 
-            invoice1.AppendInvoice(invoice2);
+            invoice1.AppendInvoices(new List<Invoice> { invoice2 });
             Console.WriteLine(invoice1.Total);
         }
 

@@ -20,7 +20,7 @@ namespace InvoiceProject
         /// AppendInvoice appends the items from the sourceInvoice to the current invoice
         /// </summary>
         /// <param name="sourceInvoice">Invoice to merge from</param>
-        public void AppendInvoice(Invoice sourceInvoice) => LineItems.AddRange(sourceInvoice.LineItems);
+        public void AppendInvoices(List<Invoice> sourceInvoice) => LineItems.AddRange(sourceInvoice.SelectMany(i => i.LineItems));
         
         /// <summary>
         /// Creates a deep clone of the current invoice (all fields and properties)

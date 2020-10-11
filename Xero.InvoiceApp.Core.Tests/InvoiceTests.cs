@@ -93,11 +93,11 @@ namespace Xero.InvoiceApp.Core.Tests
                 Description = "Blueberries"
             });
 
-            invoice1.AppendInvoice(invoice2);
+            invoice1.AppendInvoices(new List<Invoice> { invoice2 });
 
             Assert.Equal(65.35m, invoice1.Total);
         }
-    
+
         [Fact]
         public void GivenInvoice_WhenDeepClone_ShouldHaveTheSameProperties()
         {
