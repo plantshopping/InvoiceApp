@@ -41,7 +41,7 @@ namespace InvoiceProject
         /// <param name="sourceInvoice">Invoice to merge from</param>
         public void MergeInvoices(Invoice sourceInvoice)
         {
-            throw new NotImplementedException();
+            LineItems.AddRange(sourceInvoice.LineItems);
         }
 
         /// <summary>
