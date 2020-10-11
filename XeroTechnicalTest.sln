@@ -5,9 +5,13 @@ VisualStudioVersion = 16.0.29215.179
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xero.InvoiceApp.Core", "Source\Xero.InvoiceApp.Core\Xero.InvoiceApp.Core.csproj", "{AACC4620-179A-46C2-8FFA-51637909CC58}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xero.InvoiceApp.Runner", "Source\Xero.InvoiceApp.Runner\Xero.InvoiceApp.Runner.csproj", "{4FCAA0CE-47A9-4852-ABD5-C04D34651DDD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xero.InvoiceApp.Runner", "Source\Xero.InvoiceApp.Runner\Xero.InvoiceApp.Runner.csproj", "{4FCAA0CE-47A9-4852-ABD5-C04D34651DDD}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Source", "Source", "{3E3CD5C3-C70B-48D5-874B-CDD2ED23F69D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{2A01775B-7018-4074-A4CC-AEC6A2E641DE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xero.InvoiceApp.Core.Tests", "Xero.InvoiceApp.Core.Tests\Xero.InvoiceApp.Core.Tests.csproj", "{D8581312-EA00-4AAD-84F8-0BE3E0C896A8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,6 +27,10 @@ Global
 		{4FCAA0CE-47A9-4852-ABD5-C04D34651DDD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4FCAA0CE-47A9-4852-ABD5-C04D34651DDD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4FCAA0CE-47A9-4852-ABD5-C04D34651DDD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D8581312-EA00-4AAD-84F8-0BE3E0C896A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D8581312-EA00-4AAD-84F8-0BE3E0C896A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D8581312-EA00-4AAD-84F8-0BE3E0C896A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D8581312-EA00-4AAD-84F8-0BE3E0C896A8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -30,6 +38,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{AACC4620-179A-46C2-8FFA-51637909CC58} = {3E3CD5C3-C70B-48D5-874B-CDD2ED23F69D}
 		{4FCAA0CE-47A9-4852-ABD5-C04D34651DDD} = {3E3CD5C3-C70B-48D5-874B-CDD2ED23F69D}
+		{D8581312-EA00-4AAD-84F8-0BE3E0C896A8} = {2A01775B-7018-4074-A4CC-AEC6A2E641DE}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {EF5EB795-145A-45B1-8745-315977431FE4}
