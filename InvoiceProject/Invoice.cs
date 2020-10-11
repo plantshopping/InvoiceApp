@@ -14,9 +14,9 @@ namespace InvoiceProject
             LineItems.Add(invoiceLine);
         }
 
-        public void RemoveInvoiceLine(int SOMEID)
+        public void RemoveInvoiceLine(int id)
         {
-            throw new NotImplementedException();
+            LineItems.RemoveAll(l => l.InvoiceLineId == id);
         }
 
         /// <summary>
