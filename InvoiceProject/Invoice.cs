@@ -58,7 +58,7 @@ namespace InvoiceProject
         /// </summary>
         public override string ToString()
         {
-            throw new NotImplementedException();
+            return string.Format("Invoice Number: {0}, InvoiceDate: {1}, LineItemCount: {2}", InvoiceNumber.ToString(), InvoiceDate.ToString("dd/MM/yyyy"), LineItems.Count);
         }
     }
 }
