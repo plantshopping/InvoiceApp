@@ -95,6 +95,38 @@ namespace Xero.InvoiceApp.Core.Tests
         }
 
         [Fact]
+        public void Remove_NullId_ShouldNotRemoveAny()
+        {
+            // Given
+            var invoice = new Invoice
+            {
+                LineItems = new List<InvoiceLine>{ _invoiceLine1 }
+            };
+            
+            // When
+            invoice.RemoveInvoiceLines(null);
+            
+            // Then
+            Assert.NotEmpty(invoice.LineItems);
+        }
+
+        [Fact]
+        public void Append_NullInvoice_ShouldNotAddAnything()
+        {
+            // Given
+            var invoice = new Invoice
+            {
+                LineItems = new List<InvoiceLine> {_invoiceLine1}
+            };
+            
+            // When
+            invoice.AppendInvoices(null);
+            
+            // Then
+            Assert.Single(invoice.LineItems);
+        }
+        
+        [Fact]
         public void Append_InvoiceWithMultipleInvoiceLines_ShouldReturnCorrectTotal()
         {
             // Given

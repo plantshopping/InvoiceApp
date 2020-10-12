@@ -12,16 +12,16 @@ namespace InvoiceProject
         public List<InvoiceLine> LineItems { get; set; } = new List<InvoiceLine>();
         public decimal Total => LineItems.Sum(l => l.TotalCost);
 
-        public void AddInvoiceLines(IEnumerable<InvoiceLine> invoiceLines) => LineItems.AddRange(invoiceLines);
+        public void AddInvoiceLines(IEnumerable<InvoiceLine> invoiceLines) => LineItems.AddRange(invoiceLines ?? new List<InvoiceLine>());
 
-        public void RemoveInvoiceLines(IEnumerable<int> ids) => LineItems.RemoveAll(l => ids.Contains(l.Id));
+        public void RemoveInvoiceLines(IEnumerable<int> ids) => LineItems.RemoveAll(l => ids?.Contains(l.Id) ?? false);
 
         /// <summary>
         /// AppendInvoices appends the items from the sourceInvoice to the current invoice
         /// </summary>
         /// <param name="sourceInvoices">Invoice to merge from</param>
         public void AppendInvoices(IEnumerable<Invoice> sourceInvoices) =>
-            LineItems.AddRange(sourceInvoices.SelectMany(i => i.LineItems));
+            LineItems.AddRange(sourceInvoices == null ? new List<InvoiceLine>() : sourceInvoices.SelectMany(i => i.LineItems));
 
         /// <summary>
         /// Creates a deep clone of the current invoice (all fields and properties)
