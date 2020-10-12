@@ -51,7 +51,7 @@ namespace Xero.InvoiceApp.Core.Tests
             var invoice = new Invoice();
 
             // When
-            invoice.AddInvoiceLines(invoiceLines);
+            invoice.AddLineItems(invoiceLines);
 
             // Then
             Assert.Equal(40.84m, invoice.Total);
@@ -69,7 +69,7 @@ namespace Xero.InvoiceApp.Core.Tests
             var invoice = new Invoice();
 
             // When
-            invoice.AddInvoiceLines(invoiceLines);
+            invoice.AddLineItems(invoiceLines);
 
             // Then
             Assert.Equal(61.68m, invoice.Total);
@@ -88,7 +88,7 @@ namespace Xero.InvoiceApp.Core.Tests
             };
 
             // When
-            invoice.RemoveInvoiceLines(new List<int> {1});
+            invoice.RemoveLineItems(new List<int> {1});
 
             // Then
             Assert.Equal(20.84m, invoice.Total);
@@ -104,7 +104,7 @@ namespace Xero.InvoiceApp.Core.Tests
             };
             
             // When
-            invoice.RemoveInvoiceLines(null);
+            invoice.RemoveLineItems(null);
             
             // Then
             Assert.NotEmpty(invoice.LineItems);

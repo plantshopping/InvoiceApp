@@ -12,9 +12,9 @@ namespace InvoiceProject
         public List<InvoiceLine> LineItems { get; set; } = new List<InvoiceLine>();
         public decimal Total => LineItems.Sum(l => l.TotalCost);
 
-        public void AddInvoiceLines(IEnumerable<InvoiceLine> invoiceLines) => LineItems.AddRange(invoiceLines ?? new List<InvoiceLine>());
+        public void AddLineItems(IEnumerable<InvoiceLine> invoiceLines) => LineItems.AddRange(invoiceLines ?? new List<InvoiceLine>());
 
-        public void RemoveInvoiceLines(IEnumerable<int> ids) => LineItems.RemoveAll(l => ids?.Contains(l.Id) ?? false);
+        public void RemoveLineItems(IEnumerable<int> ids) => LineItems.RemoveAll(l => ids?.Contains(l.Id) ?? false);
 
         /// <summary>
         /// AppendInvoices appends the items from the sourceInvoice to the current invoice
