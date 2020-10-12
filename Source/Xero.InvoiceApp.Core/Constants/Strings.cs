@@ -1,4 +1,4 @@
-﻿namespace Xero.InvoiceApp.Core
+﻿namespace Xero.InvoiceApp.Core.Constants
 {
     public static class Strings
     {

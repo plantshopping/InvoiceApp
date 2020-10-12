@@ -1,3 +1,4 @@
+using Xero.InvoiceApp.Core.Models;
 using Xunit;
 
 namespace Xero.InvoiceApp.Core.Tests

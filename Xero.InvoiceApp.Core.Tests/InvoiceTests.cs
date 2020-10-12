@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Xero.InvoiceApp.Core.Models;
 using Xunit;
 
 namespace Xero.InvoiceApp.Core.Tests

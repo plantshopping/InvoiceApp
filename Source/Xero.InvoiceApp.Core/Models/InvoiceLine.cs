@@ -1,4 +1,4 @@
-﻿namespace Xero.InvoiceApp.Core
+﻿namespace Xero.InvoiceApp.Core.Models
 {
     public class InvoiceLine
     {

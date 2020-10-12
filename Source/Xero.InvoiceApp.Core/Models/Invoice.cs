@@ -2,8 +2,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Xero.InvoiceApp.Core.Constants;
 
-namespace Xero.InvoiceApp.Core
+namespace Xero.InvoiceApp.Core.Models
 {
     public class Invoice
     {
