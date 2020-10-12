@@ -1,4 +1,4 @@
-﻿namespace InvoiceProject
+﻿namespace Xero.InvoiceApp.Core
 {
     public static class Strings
     {

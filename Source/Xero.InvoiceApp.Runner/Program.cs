@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace InvoiceProject
+namespace Xero.InvoiceApp.Runner
 {
     public class Program
     {
